@@ -20,6 +20,7 @@ export class AppService {
 
   constructor() {
     console.debug('AppService initiated.');
+
     /** Load initial value. */
     console.debug('Loading todos from localStorage.');
     let storedTodos: string | null = localStorage.getItem(this.todosKey);

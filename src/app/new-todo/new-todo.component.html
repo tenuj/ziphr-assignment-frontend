@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    New todo
+  </div>
+  <div class="card-body">
+    <form [formGroup]="newTodoForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- title form element -->
+      <div class="mb-3">
+        <label for="todoTitle" class="form-label">Title</label>
+        <input type="text"
+               class="form-control"
+               id="todoTitle"
+               maxlength="32"
+               [class.is-invalid]="!title?.valid && title?.touched"
+               [class.is-valid]="title?.valid && title?.touched"
+               formControlName="title">
+        <div class="invalid-feedback">
+          <span *ngIf="title?.errors?.['required']">The title field is required.</span>
+          <span *ngIf="title?.errors?.['minlength']">Min title's characters are 10.</span>
+          <span *ngIf="title?.errors?.['maxlength']">Max title's characters are 32.</span>
+        </div>
+      </div>
+      <!-- date form element -->
+      <div class="mb-3">
+        <label for="dueDate" class="form-label">Due date</label>
+        <app-date-time-picker id="dueDate"
+          [minDate]="timePickerMinDate"
+          formControlName="date">
+        </app-date-time-picker>
+        <div class="invalid-feedback">
+          <span *ngIf="date?.errors?.['required']">The title field is empty.</span>
+        </div>
+      </div>
+
+      <!-- priority form element -->
+      <label for="dueDate" class="form-label">Priority</label>
+      <div class="mb-3">
+        <app-dropdown-menu #menu [items]="priorityItems" formControlName="priority">
+          <button type="button"
+                  class="btn dropdown-toggle"
+                  [class.btn-danger]="menu.item?.value === 'HIGH'"
+                  [class.btn-warning]="menu.item?.value === 'NORMAL'"
+                  [class.btn-primary]="menu.item?.value === 'LOW'"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+            {{menu.item ? menu.item.label : 'Todos priority'}}
+          </button>
+        </app-dropdown-menu>
+      </div>
+      <!-- footer -->
+      <div class="d-flex justify-content-end mt-5">
+        <a class="btn btn-light mx-3" routerLink="/">Cancel</a>
+        <button type="submit" class="btn btn-primary" [disabled]="!newTodoForm.valid">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

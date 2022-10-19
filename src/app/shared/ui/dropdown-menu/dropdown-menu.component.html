@@ -1,0 +1,8 @@
+<ng-content></ng-content>
+<ul class="dropdown-menu">
+  <li class="dropdown-item"
+      *ngFor="let item of items"
+      (click)="onItemClick(item)">
+    {{item.label}}
+  </li>
+</ul>
