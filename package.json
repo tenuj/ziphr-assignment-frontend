@@ -4,7 +4,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "deploy": "ng deploy --base-href=https://tenuj.github.io/ziphr-assignment-frontend/"
   },
   "dependencies": {
     "@angular/animations": "^14.1.0",
@@ -35,6 +36,7 @@
     "@angular/compiler-cli": "^14.1.0",
     "@typescript-eslint/eslint-plugin": "5.29.0",
     "@typescript-eslint/parser": "5.29.0",
+    "angular-cli-ghpages": "^1.0.3",
     "eslint": "^8.18.0",
     "typescript": "~4.7.2"
   }
